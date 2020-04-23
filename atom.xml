@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-22T01:50:22.206Z</updated>
+  <updated>2020-04-23T15:59:26.780Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>取法乎上，仅得乎中</title>
+    <link href="http://yoursite.com/2020/04/23/thought-1/"/>
+    <id>http://yoursite.com/2020/04/23/thought-1/</id>
+    <published>2020-04-23T15:12:07.000Z</published>
+    <updated>2020-04-23T15:59:26.780Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​        我也曾真正疯狂的学习过一次。不是中高考，不是大一上学期的期末考，而是就在前几周，平平常常的几天。那几天规律作息，按时上课，认真做笔记，作业当日完成从不拖沓，一天有效学习时间十个小时以上。不过当我自信地认为这种状态能一直持续时，它很快就消散了，只存在了短短的六天。于是我日日夜夜试图恢复那种疯狂的状态，但一个月过去了，仍没能成功。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="随想" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>控制台小程序|自动表白机</title>

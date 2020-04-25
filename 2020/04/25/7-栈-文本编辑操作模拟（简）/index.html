@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    7-栈-文本编辑操作模拟（简） |  UnknownWonder&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/dragon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="UnknownWonder's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-7-栈-文本编辑操作模拟（简）" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  7-栈-文本编辑操作模拟（简）
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" class="article-date">
+  <time datetime="2020-04-25T11:40:41.000Z" itemprop="datePublished">2020-04-25</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h4 id="难度：2"><a href="#难度：2" class="headerlink" title="难度：2"></a>难度：2</h4><p>【问题描述】</p>
+<p>编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：</p>
+<p>op pos str</p>
+<p>其中op为编辑操作命令编码（在此只有插入和删除操作，1表示插入或2表示删除操作）；pos表示插入或删除的位置；str表示已经插入或删除的字符串（中间没有空格）。各数据间以一个空格分隔。</p>
+<p>然后在空一行后，再分行输入当前将要进行的编辑操作，包括如下四种操作（操作编码分别为：1表示插入，2表示删除操作，3表示撤销（即undo操作），-1表示结束）：</p>
+<a id="more"></a>
+
+<p>1 pos str</p>
+<p>表示将在pos位置插入字符串str（中间没有空格），各数据间以一个空格分隔；</p>
+<p>2 pos n</p>
+<p>表示将从pos位置开始删除n个字符（各数据间以一个空格分隔），若要删除的字符个数多于已有字符个数（即在文本中从pos开始的字符个数小于n），则按实际字符数删除即可。（提示：为了能够撤销删除操作，应按“2 pos str”形式保存命令。）</p>
+<p>3</p>
+<p>表示撤销最近执行的插入或删除操作，可以进行多次撤销操作，注意：也可以撤销之前已经发生过的n步编辑操作中的操作。</p>
+<p>-1</p>
+<p>表示退出编辑操作，在屏幕上输出最终编辑后的文本。</p>
+<p>要求：</p>
+<p>1、上述所有输入的编辑操作中的字符串str都不包含空白字符（空格符、制表符或换行符）；</p>
+<p>2、插入操作中的位置pos大于等于0，并且小于等于当前文本的字符个数；0位置表示文本第一个字符的位置；若pos为当前文本的字符个数，则表示在文本最后插入字符串；</p>
+<p>3、删除操作中的位置pos大于等于0，并且小于当前文字的字符个数；</p>
+<p>4、若已无操作可撤销，则再进行撤销操作无效；</p>
+<p>5、文本在编辑过程中，总字符个数不会超过512。</p>
+<p>【输入形式】</p>
+<p>先从键盘输入一行字符串，表示已经经过n步编辑操作后的文本串，然后在下一行输入一个正整数n，并分行输入n步插入或删除操作（表示按时间先后顺序已进行的操作），格式如上所述。随后空一行，再分行输入将要进行的编辑操作，格式如上所述。直到输入-1操作为止。</p>
+<p>【输出形式】</p>
+<p>在屏幕上输出最终编辑后的文本内容。</p>
+<p>【样例输入】</p>
+<p>A Stack is a container of objects that are inserted and removed according to the last-in first-out (LIFO) principle.???</p>
+<p>4</p>
+<p>1 20 ainer</p>
+<p>2 0 ???</p>
+<p>1 85 -</p>
+<p>1 99 (LIFO)</p>
+<p>3</p>
+<p>2 110 10</p>
+<p>1 110 Objects</p>
+<p>2 98 1</p>
+<p>2 0 1</p>
+<p>2 108 10</p>
+<p>3</p>
+<p>3</p>
+<p>3</p>
+<p>-1</p>
+<p>【样例输出】</p>
+<p>A Stack is a container of objects that are inserted and removed according to the last-in first-out principle.Objects</p>
+<p>【样例说明】</p>
+<p>第一行输入的文本串是先后经过下面4次编辑操作后得到的：先在20位置插入了字符串ainer，然后删除了开始位置的字符串???，随后在85位置插入了一个字符-，最后在99位置插入了字符串(LIFO)。</p>
+<p>随后输入了撤销操作，即撤销先前最后进行的“1 99 (LIFO)”操作，也就是将99位置的6个字符删除；</p>
+<p>2 110 10：将文本串最后的字符串???删除；</p>
+<p>1 110 Objects：在文本串末尾插入字符串Objects；</p>
+<p>随后执行了三次删除操作，又执行了三次撤销操作，最后输入的-1表示编辑操作结束，在屏幕上输出最终编辑后的文本串。</p>
+<h2 id="第一次题解"><a href="#第一次题解" class="headerlink" title="第一次题解"></a>第一次题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INSR 1	<span class="comment">//宏定义当前操作状态</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEL 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UNDO 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> END -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 600</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxOP 512</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">StackRecord</span>* <span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">StackRecord</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> op[MaxOP];</span><br><span class="line">	<span class="keyword">int</span> pos[MaxOP];</span><br><span class="line">	<span class="keyword">int</span> top;</span><br><span class="line">	<span class="keyword">char</span> edits[MaxOP][MaxSize];</span><br><span class="line">&#125;;</span><br><span class="line">Stack st;</span><br><span class="line"><span class="keyword">char</span> str[MaxSize];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">char</span>*)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">char</span>*)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">int</span> len;</span><br><span class="line">	<span class="keyword">int</span> curop,curpos;</span><br><span class="line">	<span class="keyword">int</span> delnum;</span><br><span class="line">	<span class="keyword">char</span> curedits[MaxSize];</span><br><span class="line">	</span><br><span class="line">	st=(Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct StackRecord));</span><br><span class="line">	st-&gt;top=<span class="number">-1</span>;</span><br><span class="line">	</span><br><span class="line">	gets(str);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//读入前n个操作并压栈</span></span><br><span class="line">	<span class="keyword">while</span>(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %s"</span>,&amp;curop,&amp;curpos,curedits);</span><br><span class="line">		Push(curop,curpos,curedits);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;curop)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">switch</span>(curop)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> END:</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">goto</span> <span class="built_in">end</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">case</span> INSR:</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">scanf</span>(<span class="string">"%d%s"</span>,&amp;curpos,&amp;curedits);</span><br><span class="line">					Push(curop,curpos,curedits);</span><br><span class="line">					Insert(curpos,curedits);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">case</span> DEL:</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;curpos,&amp;delnum);</span><br><span class="line">					<span class="keyword">for</span>(i=curpos,j=<span class="number">0</span>;i&lt;curpos+delnum&amp;&amp;str[i]!=<span class="string">'\0'</span>;i++,j++) <span class="comment">//获取被删除的子</span></span><br><span class="line">						curedits[j]=str[i];									<span class="comment">//字符串</span></span><br><span class="line">					curedits[j]=<span class="string">'\0'</span>;</span><br><span class="line">					Push(curop,curpos,curedits);</span><br><span class="line">					Delete(curpos,delnum);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">case</span> UNDO:</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(st-&gt;top==<span class="number">-1</span>)</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					<span class="keyword">if</span>(st-&gt;op[st-&gt;top]==INSR)</span><br><span class="line">						Delete(st-&gt;pos[st-&gt;top],<span class="built_in">strlen</span>(st-&gt;edits[st-&gt;top]));</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span>(st-&gt;op[st-&gt;top]==DEL)</span><br><span class="line">						Insert(st-&gt;pos[st-&gt;top],st-&gt;edits[st-&gt;top]);</span><br><span class="line">                    </span><br><span class="line">					Pop();</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"unknown op!"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">end</span>:</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>,str);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(<span class="keyword">int</span> curop,<span class="keyword">int</span> curpos,<span class="keyword">char</span>* curedits)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	st-&gt;top++;</span><br><span class="line">	st-&gt;op[st-&gt;top]=curop;</span><br><span class="line">	st-&gt;pos[st-&gt;top]=curpos;</span><br><span class="line">	<span class="built_in">strcpy</span>(st-&gt;edits[st-&gt;top],curedits);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pop</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	st-&gt;top--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> curpos,<span class="keyword">char</span>* curedits)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> temp[MaxSize];</span><br><span class="line">	<span class="built_in">strcpy</span>(temp,str+curpos);</span><br><span class="line">	str[curpos]=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="built_in">strcat</span>(str,curedits);</span><br><span class="line">	<span class="built_in">strcat</span>(str,temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> curpos,<span class="keyword">int</span> delnum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> temp[MaxSize];</span><br><span class="line">	<span class="keyword">if</span>(curpos+delnum&lt;<span class="built_in">strlen</span>(str))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">strcpy</span>(temp,str+curpos+delnum);</span><br><span class="line">		<span class="built_in">strcpy</span>(str+curpos,<span class="string">""</span>);</span><br><span class="line">		<span class="built_in">strcat</span>(str,temp);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">strcpy</span>(str+curpos,<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="优秀题解"><a href="#优秀题解" class="headerlink" title="优秀题解"></a>优秀题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">暂无</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="反思总结"><a href="#反思总结" class="headerlink" title="反思总结"></a>反思总结</h2><ul>
+<li><p>fgets()读取字符串时，会读入’\n’，gets()则不会。这也意味着gets()后接输入需要特别注意’\n’的问题，如getchar()，scanf(“%c”)等，但scanf(“%d”)则无需注意。</p>
+</li>
+<li><p>strcat()复制到字符串尾部，不要加上游标。</p>
+</li>
+<li><p>本题是字符串剪接和栈的综合，写完第一遍代码debug时发现并没有在栈上出bug，而是出在了字符串剪接上。这里可以总结出字符串中插入子串和删除一定长度字符的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一定要分清strcpy()和strcat(),可能会手误打错；另外注意strcat是直接接到尾部，不要加相对游标</span></span><br><span class="line"><span class="comment">//在str的pos位置插入子串substr	注：pos指从0开始的游标，若从实际字符串从1开始计数，则需调整</span></span><br><span class="line"><span class="comment">//即：拿下后面的，str置\0，接上目标串，再接上temp串</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">char</span>* str,<span class="keyword">int</span> pos,<span class="keyword">char</span>* substr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> temp[MaxSize];</span><br><span class="line">	<span class="built_in">strcpy</span>(temp,str+pos);</span><br><span class="line">	str[pos]=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="built_in">strcat</span>(str,substr);</span><br><span class="line">	<span class="built_in">strcat</span>(str,temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在str的pos位置起，删除n个字符（pos位置的调整同上）</span></span><br><span class="line"><span class="comment">//即：拿下后面的，str置\0，接到str上</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> temp[MaxSize];</span><br><span class="line">	<span class="keyword">if</span>(pos+n&lt;<span class="built_in">strlen</span>(str))	<span class="comment">//判断要删除的字符个数n是否超过字符串长度</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">strcpy</span>(temp,str+pos+n);</span><br><span class="line">		<span class="built_in">strcpy</span>(str+pos,<span class="string">""</span>);</span><br><span class="line">		<span class="built_in">strcat</span>(str,temp);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">strcpy</span>(str+pos,<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Donate
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>Copyright： </strong>
+              Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88-%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">栈 字符串</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/04/24/2-%E6%A0%88-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2 栈-基本操作</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> UnknownWonder
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/dragon.ico" alt="UnknownWonder&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">类别</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/04/20/AboutMe">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>感谢支持~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://unknownwonder.github.io/2020/04/20/AboutMe/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://unknownwonder.github.io/2020/04/20/AboutMe/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['长风破浪会有时，直挂云帆济沧海', '不经一番寒彻骨，怎得梅花扑鼻香', '博观而约取，厚积而薄发'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+  
+<script src="/js/clickLove.js"></script>
+
+
+
+<!-- 复制 -->
+
+  
+<link rel="stylesheet" href="/css/clipboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+    
+  </div>
+</body>
+
+</html>

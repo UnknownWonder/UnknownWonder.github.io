@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-25T13:14:49.732Z</updated>
+  <updated>2020-04-26T15:15:07.191Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>7-栈-文本编辑操作模拟（简）</title>
-    <link href="http://yoursite.com/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/"/>
-    <id>http://yoursite.com/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/</id>
-    <published>2020-04-25T11:40:41.000Z</published>
-    <updated>2020-04-25T13:14:49.732Z</updated>
+    <title>4-队列-银行排队模拟（生产者-消费者模拟）</title>
+    <link href="http://yoursite.com/2020/04/26/4-%E9%98%9F%E5%88%97-%E9%93%B6%E8%A1%8C%E6%8E%92%E9%98%9F%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E6%8B%9F%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/04/26/4-%E9%98%9F%E5%88%97-%E9%93%B6%E8%A1%8C%E6%8E%92%E9%98%9F%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E6%8B%9F%EF%BC%89/</id>
+    <published>2020-04-26T08:00:48.000Z</published>
+    <updated>2020-04-26T15:15:07.191Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;难度：2&quot;&gt;&lt;a href=&quot;#难度：2&quot; class=&quot;headerlink&quot; title=&quot;难度：2&quot;&gt;&lt;/a&gt;难度：2&lt;/h4&gt;&lt;p&gt;【问题描述】&lt;/p&gt;
-&lt;p&gt;编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：&lt;/p&gt;
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;【难度】3&quot;&gt;&lt;a href=&quot;#【难度】3&quot; class=&quot;headerlink&quot; title=&quot;【难度】3&quot;&gt;&lt;/a&gt;【难度】3&lt;/h4&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;一个系统模仿另一个系统行为的技术称为&lt;strong&gt;模拟&lt;/strong&gt;，如飞行模拟器。模拟可以用来进行方案论证、人员培训和改进服务。计算机技术常用于模拟系统中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生产者&lt;/strong&gt;-&lt;strong&gt;消费者&lt;/strong&gt;（Server-Custom）是常见的应用模式，见于银行、食堂、打印机、医院、超等提供服务和使用服务的应用中。这类应用的主要问题是消费者如果等待（排队）时间过长，会引发用户抱怨，影响服务质量；如果提供服务者（服务窗口）过多，将提高运管商成本。（经济学中排队论）&lt;/p&gt;
+&lt;p&gt;假设某银行网点有五个服务窗口，分别为三个对私、一个对公和一个外币窗口。银行服务的原则是先来先服务。通常对私业务人很多，其它窗口人则较少，可临时改为对私服务。假设当对私窗口等待服务的客户（按实际服务窗口）平均排队人数超过（大于或等于）7人时，等待客户将可能有抱怨，影响服务质量，此时银行可临时将其它窗口中一个或两个改为对私服务，当客户少于7人时，将立即恢复原有业务。设计一个程序用来模拟银行服务。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="队列" scheme="http://yoursite.com/tags/%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3-栈-文本编辑操作模拟（简）</title>
+    <link href="http://yoursite.com/2020/04/25/3-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/04/25/3-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/</id>
+    <published>2020-04-25T11:40:41.000Z</published>
+    <updated>2020-04-26T15:15:01.997Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;【难度】2&quot;&gt;&lt;a href=&quot;#【难度】2&quot; class=&quot;headerlink&quot; title=&quot;【难度】2&quot;&gt;&lt;/a&gt;【难度】2&lt;/h4&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：&lt;/p&gt;
 &lt;p&gt;op pos str&lt;/p&gt;
 &lt;p&gt;其中op为编辑操作命令编码（在此只有插入和删除操作，1表示插入或2表示删除操作）；pos表示插入或删除的位置；str表示已经插入或删除的字符串（中间没有空格）。各数据间以一个空格分隔。&lt;/p&gt;
 &lt;p&gt;然后在空一行后，再分行输入当前将要进行的编辑操作，包括如下四种操作（操作编码分别为：1表示插入，2表示删除操作，3表示撤销（即undo操作），-1表示结束）：&lt;/p&gt;
@@ -35,7 +55,9 @@
     
     
     
-      <category term="栈 字符串" scheme="http://yoursite.com/tags/%E6%A0%88-%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
@@ -44,12 +66,11 @@
     <link href="http://yoursite.com/2020/04/24/2-%E6%A0%88-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2020/04/24/2-%E6%A0%88-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
     <published>2020-04-24T11:50:12.000Z</published>
-    <updated>2020-04-25T13:14:35.152Z</updated>
+    <updated>2020-04-26T10:49:56.888Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;难度：1&quot;&gt;&lt;a href=&quot;#难度：1&quot; class=&quot;headerlink&quot; title=&quot;难度：1&quot;&gt;&lt;/a&gt;难度：1&lt;/h4&gt;&lt;p&gt;【问题描述】&lt;/p&gt;
-&lt;p&gt;假设给定的整数栈初始状态为空，栈的最大容量为100。从标准输入中输入一组栈操作，按操作顺序输出出栈元素序列。栈操作：1表示入栈操作，后跟一个整数（不为1、0和-1）为入栈元素；0表示出栈操作；-1表示操作结束。&lt;/p&gt;
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;【难度】1&quot;&gt;&lt;a href=&quot;#【难度】1&quot; class=&quot;headerlink&quot; title=&quot;【难度】1&quot;&gt;&lt;/a&gt;【难度】1&lt;/h4&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;假设给定的整数栈初始状态为空，栈的最大容量为100。从标准输入中输入一组栈操作，按操作顺序输出出栈元素序列。栈操作：1表示入栈操作，后跟一个整数（不为1、0和-1）为入栈元素；0表示出栈操作；-1表示操作结束。&lt;/p&gt;
     
     </summary>
     
@@ -64,12 +85,11 @@
     <link href="http://yoursite.com/2020/04/24/1-%E6%A0%88-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/"/>
     <id>http://yoursite.com/2020/04/24/1-%E6%A0%88-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/</id>
     <published>2020-04-24T11:18:33.000Z</published>
-    <updated>2020-04-25T13:14:22.359Z</updated>
+    <updated>2020-04-26T10:49:25.393Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;难度：3&quot;&gt;&lt;a href=&quot;#难度：3&quot; class=&quot;headerlink&quot; title=&quot;难度：3&quot;&gt;&lt;/a&gt;难度：3&lt;/h4&gt;&lt;p&gt;【问题描述】&lt;/p&gt;
-&lt;p&gt;从标准输入中读入一个整数算术运算表达式，如24 / ( 1 + 5%3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )= ，计算表达式结果，并输出。&lt;/p&gt;
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h4 id=&quot;【难度】3&quot;&gt;&lt;a href=&quot;#【难度】3&quot; class=&quot;headerlink&quot; title=&quot;【难度】3&quot;&gt;&lt;/a&gt;【难度】3&lt;/h4&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;从标准输入中读入一个整数算术运算表达式，如24 / ( 1 + 5%3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )= ，计算表达式结果，并输出。&lt;/p&gt;
     
     </summary>
     

@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    7-栈-文本编辑操作模拟（简） |  UnknownWonder&#39;s Blog
+    3-栈-文本编辑操作模拟（简） |  UnknownWonder&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-7-栈-文本编辑操作模拟（简）" class="article article-type-post" itemscope
+  <article id="post-3-栈-文本编辑操作模拟（简）" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  7-栈-文本编辑操作模拟（简）
+  3-栈-文本编辑操作模拟（简）
 </h1>
  
 
@@ -59,7 +59,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" class="article-date">
+      <a href="/2020/04/25/3-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" class="article-date">
   <time datetime="2020-04-25T11:40:41.000Z" itemprop="datePublished">2020-04-25</time>
 </a>
       
@@ -104,8 +104,7 @@
       
 
       
-      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h4 id="难度：2"><a href="#难度：2" class="headerlink" title="难度：2"></a>难度：2</h4><p>【问题描述】</p>
-<p>编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：</p>
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h4 id="【难度】2"><a href="#【难度】2" class="headerlink" title="【难度】2"></a>【难度】2</h4><h4 id="【问题描述】"><a href="#【问题描述】" class="headerlink" title="【问题描述】"></a>【问题描述】</h4><p>编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：</p>
 <p>op pos str</p>
 <p>其中op为编辑操作命令编码（在此只有插入和删除操作，1表示插入或2表示删除操作）；pos表示插入或删除的位置；str表示已经插入或删除的字符串（中间没有空格）。各数据间以一个空格分隔。</p>
 <p>然后在空一行后，再分行输入当前将要进行的编辑操作，包括如下四种操作（操作编码分别为：1表示插入，2表示删除操作，3表示撤销（即undo操作），-1表示结束）：</p>
@@ -125,12 +124,9 @@
 <p>3、删除操作中的位置pos大于等于0，并且小于当前文字的字符个数；</p>
 <p>4、若已无操作可撤销，则再进行撤销操作无效；</p>
 <p>5、文本在编辑过程中，总字符个数不会超过512。</p>
-<p>【输入形式】</p>
-<p>先从键盘输入一行字符串，表示已经经过n步编辑操作后的文本串，然后在下一行输入一个正整数n，并分行输入n步插入或删除操作（表示按时间先后顺序已进行的操作），格式如上所述。随后空一行，再分行输入将要进行的编辑操作，格式如上所述。直到输入-1操作为止。</p>
-<p>【输出形式】</p>
-<p>在屏幕上输出最终编辑后的文本内容。</p>
-<p>【样例输入】</p>
-<p>A Stack is a container of objects that are inserted and removed according to the last-in first-out (LIFO) principle.???</p>
+<h4 id="【输入形式】"><a href="#【输入形式】" class="headerlink" title="【输入形式】"></a>【输入形式】</h4><p>先从键盘输入一行字符串，表示已经经过n步编辑操作后的文本串，然后在下一行输入一个正整数n，并分行输入n步插入或删除操作（表示按时间先后顺序已进行的操作），格式如上所述。随后空一行，再分行输入将要进行的编辑操作，格式如上所述。直到输入-1操作为止。</p>
+<h4 id="【输出形式】"><a href="#【输出形式】" class="headerlink" title="【输出形式】"></a>【输出形式】</h4><p>在屏幕上输出最终编辑后的文本内容。</p>
+<h4 id="【样例输入】"><a href="#【样例输入】" class="headerlink" title="【样例输入】"></a>【样例输入】</h4><p>A Stack is a container of objects that are inserted and removed according to the last-in first-out (LIFO) principle.???</p>
 <p>4</p>
 <p>1 20 ainer</p>
 <p>2 0 ???</p>
@@ -146,10 +142,8 @@
 <p>3</p>
 <p>3</p>
 <p>-1</p>
-<p>【样例输出】</p>
-<p>A Stack is a container of objects that are inserted and removed according to the last-in first-out principle.Objects</p>
-<p>【样例说明】</p>
-<p>第一行输入的文本串是先后经过下面4次编辑操作后得到的：先在20位置插入了字符串ainer，然后删除了开始位置的字符串???，随后在85位置插入了一个字符-，最后在99位置插入了字符串(LIFO)。</p>
+<h4 id="【样例输出】"><a href="#【样例输出】" class="headerlink" title="【样例输出】"></a>【样例输出】</h4><p>A Stack is a container of objects that are inserted and removed according to the last-in first-out principle.Objects</p>
+<h4 id="【样例说明】"><a href="#【样例说明】" class="headerlink" title="【样例说明】"></a>【样例说明】</h4><p>第一行输入的文本串是先后经过下面4次编辑操作后得到的：先在20位置插入了字符串ainer，然后删除了开始位置的字符串???，随后在85位置插入了一个字符-，最后在99位置插入了字符串(LIFO)。</p>
 <p>随后输入了撤销操作，即撤销先前最后进行的“1 99 (LIFO)”操作，也就是将99位置的6个字符删除；</p>
 <p>2 110 10：将文本串最后的字符串???删除；</p>
 <p>1 110 Objects：在文本串末尾插入字符串Objects；</p>
@@ -240,14 +234,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/25/7-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/25/3-%E6%A0%88-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%AE%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88-%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">栈 字符串</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
 
 
     </footer>
@@ -257,6 +251,15 @@
   
   
   <nav class="article-nav">
+    
+      <a href="/2020/04/26/4-%E9%98%9F%E5%88%97-%E9%93%B6%E8%A1%8C%E6%8E%92%E9%98%9F%E6%A8%A1%E6%8B%9F%EF%BC%88%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E6%8B%9F%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            4-队列-银行排队模拟（生产者-消费者模拟）
+          
+        </div>
+      </a>
     
     
       <a href="/2020/04/24/2-%E6%A0%88-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="article-nav-link">

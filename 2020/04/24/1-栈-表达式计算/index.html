@@ -104,7 +104,7 @@
       
 
       
-      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h4 id="【难度】3"><a href="#【难度】3" class="headerlink" title="【难度】3"></a>【难度】3</h4><h4 id="【问题描述】"><a href="#【问题描述】" class="headerlink" title="【问题描述】"></a>【问题描述】</h4><p>从标准输入中读入一个整数算术运算表达式，如24 / ( 1 + 5%3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )= ，计算表达式结果，并输出。</p>
+      <h2 id="题目（难度：3）"><a href="#题目（难度：3）" class="headerlink" title="题目（难度：3）"></a>题目（难度：3）</h2><h4 id="【问题描述】"><a href="#【问题描述】" class="headerlink" title="【问题描述】"></a>【问题描述】</h4><p>从标准输入中读入一个整数算术运算表达式，如24 / ( 1 + 5%3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )= ，计算表达式结果，并输出。</p>
 <a id="more"></a>
 
 <p>要求：</p>
@@ -130,7 +130,7 @@
 </li>
 <li><p>本题用三个栈实现操作，其实可以合并数字栈和后缀表达式栈。</p>
 </li>
-<li><p>运行时出错的一种可能：非法访问指针，在循环数组时指针循环到NULL，如下，弹出栈中优先级高的元素直到’(‘与空栈为止，在一开始忘记加入(Top(st))!=’(‘语句，导致前一段代码访问到NULL</p>
+<li><p>运行时出错的一种可能：非法访问指针，在循环数组时指针循环到NULL，如下，弹出栈中优先级高的元素直到’(‘与空栈为止，在一开始忘记加入(Top(st))!=’(‘语句，导致前一段代码访问到NULL。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!IsEmpty(st)&amp;&amp;(Top(st)!=<span class="string">'('</span>)&amp;&amp;Priority(str[i])&lt;=Priority(Top(st)))</span><br><span class="line">&#123;</span><br><span class="line">    out[cnt].b=OP;</span><br><span class="line">    out[cnt++].u.ch=Top(st);</span><br><span class="line">    Pop(st);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
@@ -223,13 +223,13 @@
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            2 栈-基本操作
+            2-栈-基本操作
           
         </div>
       </a>
     
     
-      <a href="/2020/04/23/thought-1/" class="article-nav-link">
+      <a href="/2020/04/23/%E9%9A%8F%E6%83%B31-%E5%8F%96%E6%B3%95%E4%B9%8E%E4%B8%8A%EF%BC%8C%E4%BB%85%E5%BE%97%E4%B9%8E%E4%B8%AD/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">随想|取法乎上，仅得乎中</div>
       </a>

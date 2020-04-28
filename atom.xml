@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-27T05:49:16.190Z</updated>
+  <updated>2020-04-28T15:58:18.556Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>5-栈-C程序括号匹配检查</title>
-    <link href="http://yoursite.com/2020/04/27/5-%E6%A0%88-C%E7%A8%8B%E5%BA%8F%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D%E6%A3%80%E6%9F%A5/"/>
-    <id>http://yoursite.com/2020/04/27/5-%E6%A0%88-C%E7%A8%8B%E5%BA%8F%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D%E6%A3%80%E6%9F%A5/</id>
-    <published>2020-04-27T03:59:01.000Z</published>
-    <updated>2020-04-27T05:49:16.190Z</updated>
+    <title>社科|中国共产党党员教育方式总结</title>
+    <link href="http://yoursite.com/2020/04/28/%E7%A4%BE%E7%A7%91-%E4%B8%AD%E5%9B%BD%E5%85%B1%E4%BA%A7%E5%85%9A%E5%85%9A%E5%91%98%E6%95%99%E8%82%B2%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2020/04/28/%E7%A4%BE%E7%A7%91-%E4%B8%AD%E5%9B%BD%E5%85%B1%E4%BA%A7%E5%85%9A%E5%85%9A%E5%91%98%E6%95%99%E8%82%B2%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/</id>
+    <published>2020-04-28T15:54:01.000Z</published>
+    <updated>2020-04-28T15:58:18.556Z</updated>
     
     <summary type="html">
     
@@ -29,9 +29,29 @@
       
         
         
-          &lt;h2 id=&quot;题目（难度：4）&quot;&gt;&lt;a href=&quot;#题目（难度：4）&quot; class=&quot;headerlink&quot; title=&quot;题目（难度：4）&quot;&gt;&lt;/a&gt;题目（难度：4）&lt;/h2&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot;
+          &lt;p&gt;&lt;strong&gt;中国共产党党员教育的方式总结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    
         
       
+    
+    </summary>
+    
+    
+    
+      <category term="社科" scheme="http://yoursite.com/tags/%E7%A4%BE%E7%A7%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>5-栈-C程序括号匹配检查</title>
+    <link href="http://yoursite.com/2020/04/27/5-%E6%A0%88-C%E7%A8%8B%E5%BA%8F%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D%E6%A3%80%E6%9F%A5/"/>
+    <id>http://yoursite.com/2020/04/27/5-%E6%A0%88-C%E7%A8%8B%E5%BA%8F%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D%E6%A3%80%E6%9F%A5/</id>
+    <published>2020-04-27T03:59:01.000Z</published>
+    <updated>2020-04-27T05:53:04.957Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目（难度：4）&quot;&gt;&lt;a href=&quot;#题目（难度：4）&quot; class=&quot;headerlink&quot; title=&quot;题目（难度：4）&quot;&gt;&lt;/a&gt;题目（难度：4）&lt;/h2&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;编写一程序检查C源程序文件中{}、()等括号是否匹配,并输出第一个检测到的不匹配的括号及所对应括号所在的行号（程序中只有一个括号不匹配）。&lt;/p&gt;
     
     </summary>
     

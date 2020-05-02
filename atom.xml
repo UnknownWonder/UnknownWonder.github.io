@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-28T22:50:54.900Z</updated>
+  <updated>2020-05-02T16:21:24.770Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构6-树-树叶节点遍历</title>
+    <link href="http://yoursite.com/2020/05/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%846-%E6%A0%91-%E6%A0%91%E5%8F%B6%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86/"/>
+    <id>http://yoursite.com/2020/05/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%846-%E6%A0%91-%E6%A0%91%E5%8F%B6%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86/</id>
+    <published>2020-05-02T16:08:40.000Z</published>
+    <updated>2020-05-02T16:21:24.770Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目（难度：1）&quot;&gt;&lt;a href=&quot;#题目（难度：1）&quot; class=&quot;headerlink&quot; title=&quot;题目（难度：1）&quot;&gt;&lt;/a&gt;题目（难度：1）&lt;/h2&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;从标准输入中输入一组整数，在输入过程中按照左子结点值小于根结点值、右子结点值大于等于根结点值的方式构造一棵二叉查找树，然后从左至右输出所有树中叶结点的值及高度（根结点的高度为1）。例如，若按照以下顺序输入一组整数：50、38、30、64、58、40、10、73、70、50、60、100、35，则生成下面的二叉查找树：&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="二叉树" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>社科|中国共产党党员教育方式总结</title>

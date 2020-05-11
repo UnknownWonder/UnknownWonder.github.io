@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-03T16:05:17.457Z</updated>
+  <updated>2020-05-05T14:07:18.679Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构9|树-喜鹊筑巢</title>
+    <link href="http://yoursite.com/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%849-%E6%A0%91-%E5%96%9C%E9%B9%8A%E7%AD%91%E5%B7%A2/"/>
+    <id>http://yoursite.com/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%849-%E6%A0%91-%E5%96%9C%E9%B9%8A%E7%AD%91%E5%B7%A2/</id>
+    <published>2020-05-05T13:13:17.000Z</published>
+    <updated>2020-05-05T14:07:18.679Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目（难度：3）&quot;&gt;&lt;a href=&quot;#题目（难度：3）&quot; class=&quot;headerlink&quot; title=&quot;题目（难度：3）&quot;&gt;&lt;/a&gt;题目（难度：3）&lt;/h2&gt;&lt;h4 id=&quot;【问题描述】&quot;&gt;&lt;a href=&quot;#【问题描述】&quot; class=&quot;headerlink&quot; title=&quot;【问题描述】&quot;&gt;&lt;/a&gt;【问题描述】&lt;/h4&gt;&lt;p&gt;喜鹊通常会选择一棵树最高处分枝最多（即分枝最多的结点中高度最高的结点）的地方筑巢（结构最稳定）。给定一棵三叉树，计算出喜鹊筑窝的地点（可能有多个，多个时应按树前序遍历的顺序给出相应的结点信息，包括结点号以及按照前序遍历第几个访问到该结点）。例如下图是一颗三叉树：&lt;/p&gt;
+&lt;img src=&quot;/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%849-%E6%A0%91-%E5%96%9C%E9%B9%8A%E7%AD%91%E5%B7%A2/喜鹊筑巢.jpg&quot; alt=&quot;2.jpg&quot; style=&quot;zoom: 67%;&quot;&gt;
+
+&lt;p&gt;该树中结点最多有三个分枝，拥有三个分枝的最高的结点为23号和15号结点，按照前序遍历顺序将会第19个访问到23号结点，第31个访问到15号结点。&lt;/p&gt;
+&lt;p&gt;要求：按照前序遍历访问三叉树的分枝时应先访问左分枝，再访问中间分枝，最后访问右分枝；&lt;strong&gt;根结点为第1个访问到结点&lt;/strong&gt;，树中最多有100个结点。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="多叉树" scheme="http://yoursite.com/tags/%E5%A4%9A%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构8|树-表达式树</title>
